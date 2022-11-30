@@ -1,13 +1,23 @@
-import {Component} from '@angular/core';
-import {faFaceDizzy} from "@fortawesome/free-solid-svg-icons";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-root',
+  selector: 'login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: [ './login-page.component.css' ]
 })
+export class LoginPageComponent implements OnInit{
 
-export class LoginPageComponent {
-  title = 'hsbit-organizer';
+  loginForm: FormGroup;
 
+  constructor(private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
+      email: [null, Validators.required],
+      password: [null, Validators.required]
+    });
+  }
+
+  ngOnInit() {
+
+  }
 }
