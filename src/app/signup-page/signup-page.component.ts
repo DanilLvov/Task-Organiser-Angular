@@ -21,7 +21,7 @@ export class SignupPageComponent implements OnInit{
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.min(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
   onSubmit() {
@@ -32,3 +32,4 @@ export class SignupPageComponent implements OnInit{
     else alert(message)
   }
 }
+

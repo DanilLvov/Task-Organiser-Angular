@@ -7,14 +7,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {SignupPageComponent} from "./signup-page/signup-page.component";
 import {LoginPageComponent} from "./login-page/login-page.component";
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {ResetPasswordComponent} from "./login-page/reset-password.component";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {AuthService} from "./services/auth.service";
-import {DashboardComponent} from "./Dashboard/Dashboard.component";
+import {DashboardComponent, DialogOverviewExampleDialog} from "./Dashboard/Dashboard.component";
 import {AuthGuardService} from "./services/auth-guard.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -27,13 +28,16 @@ import {AuthGuardService} from "./services/auth-guard.service";
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginPageComponent,
     SignupPageComponent,
+    ResetPasswordComponent,
+    DialogOverviewExampleDialog,
     ResetPasswordComponent
   ],
   providers: [AuthService, AuthGuardService],

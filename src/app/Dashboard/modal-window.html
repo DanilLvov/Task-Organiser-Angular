@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Add a habit</h1>
+
+<div mat-dialog-content>
+  <form
+    class="form"
+    [formGroup]="habitForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Habit Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Day Count</mat-label>
+      <input matInput formControlName="count">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <input matInput formControlName="category">
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        [mat-dialog-close]=""
+        type="submit"
+        [disabled]="habitForm.invalid"
+        [ngClass] = "{'enabled-color': habitForm.valid}"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+
+</div>
+

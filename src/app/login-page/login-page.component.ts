@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {ResetPasswordComponent} from "./reset-password.component";
 
 export interface DialogData {
   animal: string;
@@ -47,29 +48,9 @@ export class LoginPageComponent implements OnInit{
     }
   }
 
-  /*openDialog(): void {
-    const dialogRef = this.dialog.open(ResetPasswordDialog, {
+  openDialog(): void {
+    this.dialog.open(ResetPasswordComponent, {
       width: '400px'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }*/
-}
-
-/*@Component({
-  selector: 'reset-password-dialog',
-  templateUrl: 'reset-password.html',
-})
-export class ResetPasswordDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<ResetPasswordDialog>) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
-
-}*/
+}
