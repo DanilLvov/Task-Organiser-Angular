@@ -3,32 +3,48 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="page">
   <div class="page-content">
-    <h1>Habit Organizer</h1>
-    <div> <i class="material-symbols-outlined"> face </i> </div>
+    <p class="page-name">Habit Organizer</p>
+    <div class="icon-container"> <i class="material-symbols-outlined"> face </i> </div>
     <form
       class="form"
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
     >
+      <!--<mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+1 &nbsp;</span>
+        <input type="tel" matInput placeholder="555-555-1234">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>-->
       <div>
-        <input id="email" type="email" required>
+        <input formControlName="email" id="email" type="email">
         <label for="email">
           <i class="fa fa-book"></i>
           Email
         </label>
       </div>
       <div>
-        <input id="password" type="password" required>
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+        >
         <label for="password">
           <i class="fa fa-book"></i>
           Password
         </label>
       </div>
+      <div class="reset-password">
+
+      </div>
       <div class="submit-login">
-        <button type="submit"> Login </button>
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
       </div>
     </form>
-
-
   </div>
 </div>

@@ -3,19 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent} from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {LoginPageComponent} from "./login-page/login-page.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AppRoutingModule} from "./app-routing.module";
+import {SignupPageComponent} from "./signup-page/signup-page.component";
+import {LoginPageComponent} from "./login-page/login-page.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginPageComponent
-  ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    SignupPageComponent,
+    ResetPasswordComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
