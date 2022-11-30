@@ -35,7 +35,31 @@
   font-size: 50px;
 }
 
+.reset-password {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #069;
+  cursor: pointer;
+}
+
 .submit-login {
   text-align: center;
+}
+
+.enabled-color {
+  color: #fff;
+  cursor: pointer;
+
+}
+
+button {
+  color: #aaa;
+  background-color: #079;
+  font-size: 15px;
+  width: 200px;
+  height: 30px;
+  border: none;
+  margin: 10px;
 }
 

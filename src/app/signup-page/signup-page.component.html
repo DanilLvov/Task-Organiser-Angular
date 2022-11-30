@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="signup-page.component.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="page">
+  <div class="page-content">
+    <p class="page-name">Habit Organizer</p>
+    <div class="icon-container"> <i class="material-symbols-outlined"> face </i> </div>
+    <form
+      class="form"
+      [formGroup]="signupForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <!--<mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+1 &nbsp;</span>
+        <input type="tel" matInput placeholder="555-555-1234">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>-->
+      <div>
+        <input
+          formControlName="username"
+          id="username"
+          type="text"
+        >
+        <label for="username">
+          <i class="fa fa-book"></i>
+          Username
+        </label>
+        <div
+          class="helper-text"
+          *ngIf="signupForm.get('username').invalid && signupForm.get('username').touched"
+        >
+          Username min 3 chars
+        </div>
+      </div>
+      <div>
+        <input
+          formControlName="email"
+          id="email"
+          type="email"
+        >
+        <label for="email">
+          <i class="fa fa-book"></i>
+          Email
+        </label>
+        <div
+          class="helper-text"
+          *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched"
+        >
+          Invalid email
+        </div>
+      </div>
+      <div>
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+        >
+        <label for="password">
+          <i class="fa fa-book"></i>
+          Password
+        </label>
+        <div
+          class="helper-text"
+          *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched"
+        >
+          Minimum 8 characters and 1 number
+        </div>
+      </div>
+
+      <div class="submit-new-user">
+        <button
+          type="submit"
+          [disabled]="signupForm.invalid"
+        >
+          Signup
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

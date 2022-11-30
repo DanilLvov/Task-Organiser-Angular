@@ -16,6 +16,7 @@
         <input type="tel" matInput placeholder="555-555-1234">
         <mat-icon matSuffix>mode_edit</mat-icon>
       </mat-form-field>-->
+
       <div>
         <input formControlName="email" id="email" type="email">
         <label for="email">
@@ -34,17 +35,19 @@
           Password
         </label>
       </div>
-      <div class="reset-password">
-
+      <div>
+<!--        <button class="reset-password" (click)="openDialog()">Reset password?</button>-->
       </div>
       <div class="submit-login">
         <button
           type="submit"
           [disabled]="loginForm.invalid"
+          [ngClass] = "{'enabled-color': loginForm.valid}"
         >
           Login
         </button>
       </div>
+
     </form>
   </div>
 </div>
