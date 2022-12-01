@@ -1,13 +1,29 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component, ComponentRef,
+  createComponent,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {M} from "@angular/cdk/keycodes";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {HabitComponent} from "./habit.component/habit.component";
+import {bootstrapApplication} from "@angular/platform-browser";
+import {AppComponent} from "../app.component";
+
 
 export interface DialogData {
-  animal: string;
   name: string;
+  count: string;
+  category?: string;
 }
 
 @Component({
@@ -15,17 +31,32 @@ export interface DialogData {
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewChecked{
 
-  constructor(private dialog: MatDialog) {
-  }
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
 
-  addElement() {
+  name: string;
+  count: string;
+  category?: string;
 
-  }
+  constructor(
+    private dialog: MatDialog,
+    ) {}
 
   openDialog() {
-    this.dialog.open(DialogOverviewExampleDialog, { width: '250px' });
+    this.count = "0";
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, count: this.count, category: this.category}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const habitRef = this.container.createComponent(HabitComponent)
+      habitRef.instance.name = result.name;
+      habitRef.instance.count = result.count;
+    });
+  }
+
+  ngAfterViewChecked(): void {
   }
 }
 
@@ -55,8 +86,7 @@ export class DialogOverviewExampleDialog implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.habitForm.value)
-
+    //DashboardComponent.saveResult(this.habitForm.value);
   }
 
 }

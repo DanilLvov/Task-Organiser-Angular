@@ -17,9 +17,6 @@ export interface DialogData {
 })
 export class LoginPageComponent implements OnInit{
 
-  animal: string;
-  name: string;
-
   loginForm: FormGroup;
 
   constructor(

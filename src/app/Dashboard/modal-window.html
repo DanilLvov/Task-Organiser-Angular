@@ -8,21 +8,21 @@
   >
     <mat-form-field appearance="fill">
       <mat-label>Habit Name</mat-label>
-      <input matInput formControlName="name">
+      <input matInput [(ngModel)]="data.name" formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Day Count</mat-label>
-      <input matInput formControlName="count">
+      <input matInput [(ngModel)]="data.count" formControlName="count">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
-      <input matInput formControlName="category">
+      <input matInput [(ngModel)]="data.category" formControlName="category">
     </mat-form-field>
 
     <div mat-dialog-actions>
       <button
         mat-button
-        [mat-dialog-close]=""
+        [mat-dialog-close]="data"
         type="submit"
         [disabled]="habitForm.invalid"
         [ngClass] = "{'enabled-color': habitForm.valid}"

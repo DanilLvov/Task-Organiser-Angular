@@ -16,6 +16,7 @@ import {AuthService} from "./services/auth.service";
 import {DashboardComponent, DialogOverviewExampleDialog} from "./Dashboard/Dashboard.component";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HabitComponent} from "./Dashboard/habit.component/habit.component";
 
 
 @NgModule({
@@ -38,9 +39,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     SignupPageComponent,
     ResetPasswordComponent,
     DialogOverviewExampleDialog,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    HabitComponent
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, DashboardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
