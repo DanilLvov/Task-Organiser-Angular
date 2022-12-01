@@ -1,23 +1,15 @@
 import {
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  Component, ComponentRef,
-  createComponent,
-  ElementRef,
+  AfterViewInit, ChangeDetectorRef,
+  Component,
   Inject,
   OnInit,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {M} from "@angular/cdk/keycodes";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {HabitComponent} from "./habit.component/habit.component";
-import {bootstrapApplication} from "@angular/platform-browser";
-import {AppComponent} from "../app.component";
+
 
 
 export interface DialogData {
@@ -41,6 +33,7 @@ export class DashboardComponent implements AfterViewInit{
 
   constructor(
     private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
     ) {}
 
   ngAfterViewInit(): void {
@@ -58,6 +51,7 @@ export class DashboardComponent implements AfterViewInit{
           if(value.category !== undefined) habitRef.instance.category = value.category;
         });
       }
+    this.cdr.detectChanges();
   }
 
   openDialog() {
