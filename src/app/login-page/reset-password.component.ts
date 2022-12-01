@@ -31,7 +31,7 @@ export class ResetPasswordComponent implements OnInit{
   onSubmit() {
     let password = this.auth.resetPassword(this.resetForm.value.email)
     if(password !== 0) {
-      alert("this is your new password" + password)
+      alert("this is your new password " + password)
     }
     else alert("That Email doesn't exist")
   }

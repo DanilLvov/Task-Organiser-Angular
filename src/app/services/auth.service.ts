@@ -27,16 +27,13 @@ export class AuthService {
       return "invalid password";
     }
     else {
-      sessionStorage.setItem('token', 'authenticated');
+      sessionStorage.setItem('token', user.email);
       return "success"
     }
   }
 
   isAuthenticated(): boolean {
-    if(sessionStorage.getItem('token') === 'authenticated') {
-      return true;
-    }
-    else return false;
+    return sessionStorage.getItem('token') !== null;
   }
 
   resetPassword(email: string): number {

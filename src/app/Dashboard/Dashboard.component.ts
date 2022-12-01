@@ -31,7 +31,7 @@ export interface DialogData {
   templateUrl: './Dashboard.component.html',
   styleUrls: [ './Dashboard.component.css' ]
 })
-export class DashboardComponent implements AfterViewChecked{
+export class DashboardComponent implements AfterViewInit{
 
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
 
@@ -43,6 +43,23 @@ export class DashboardComponent implements AfterViewChecked{
     private dialog: MatDialog,
     ) {}
 
+  ngAfterViewInit(): void {
+      let stringJSON = localStorage.getItem('dashboard' + sessionStorage.getItem('token'));
+      if(stringJSON !== null) {
+        //localStorage.clear();
+        let data: DialogData[] = JSON.parse(stringJSON)
+        console.log(data)
+        const helper = this.container
+        data.forEach(function (value) {
+          console.log(value)
+          const habitRef = helper.createComponent(HabitComponent)
+          habitRef.instance.name = value.name;
+          habitRef.instance.count = value.count;
+          if(value.category !== undefined) habitRef.instance.category = value.category;
+        });
+      }
+  }
+
   openDialog() {
     this.count = "0";
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -50,17 +67,31 @@ export class DashboardComponent implements AfterViewChecked{
       data: {name: this.name, count: this.count, category: this.category}
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result.name !== ""){
+      if(result !== undefined){
         const habitRef = this.container.createComponent(HabitComponent)
         habitRef.instance.name = result.name;
         habitRef.instance.count = result.count;
         habitRef.instance.category = result.category;
+        this.writeToLocalStorage(result);
       }
     });
   }
 
-  ngAfterViewChecked(): void {
+  writeToLocalStorage (result: DialogData) {
+    let dashboardMail = 'dashboard' + sessionStorage.getItem('token')
+    let stringJSON = localStorage.getItem(dashboardMail);
+    if(stringJSON === null) {
+      localStorage.setItem(dashboardMail, JSON.stringify([result]))
+      console.log(localStorage.getItem(dashboardMail))
+    }
+    else {
+      let data: DialogData[] = JSON.parse(stringJSON);
+      data.push(result);
+      localStorage.setItem(dashboardMail, JSON.stringify(data))
+      console.log(localStorage.getItem(dashboardMail))
+    }
   }
+
 }
 
 @Component({
