@@ -1,0 +1,18 @@
+.upper-bar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.dashboard-name{
+  float:left;
+  vertical-align: center;
+  font-size: 30px;
+  margin: 30px;
+}
+
+.add-button-container{
+  background-color: #777;
+  float:right;
+  border-radius: 3px;
+  margin: 27px;
+}

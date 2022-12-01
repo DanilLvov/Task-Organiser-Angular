@@ -28,8 +28,8 @@ export interface DialogData {
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  templateUrl: './Dashboard.component.html',
+  styleUrls: [ './Dashboard.component.css' ]
 })
 export class DashboardComponent implements AfterViewChecked{
 
@@ -50,9 +50,12 @@ export class DashboardComponent implements AfterViewChecked{
       data: {name: this.name, count: this.count, category: this.category}
     });
     dialogRef.afterClosed().subscribe(result => {
-      const habitRef = this.container.createComponent(HabitComponent)
-      habitRef.instance.name = result.name;
-      habitRef.instance.count = result.count;
+      if(result.name !== ""){
+        const habitRef = this.container.createComponent(HabitComponent)
+        habitRef.instance.name = result.name;
+        habitRef.instance.count = result.count;
+        habitRef.instance.category = result.category;
+      }
     });
   }
 

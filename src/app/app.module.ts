@@ -17,6 +17,7 @@ import {DashboardComponent, DialogOverviewExampleDialog} from "./Dashboard/Dashb
 import {AuthGuardService} from "./services/auth-guard.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HabitComponent} from "./Dashboard/habit.component/habit.component";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {HabitComponent} from "./Dashboard/habit.component/habit.component";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSortModule
   ],
   declarations: [
     AppComponent,

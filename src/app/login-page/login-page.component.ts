@@ -47,7 +47,7 @@ export class LoginPageComponent implements OnInit{
 
   openDialog(): void {
     this.dialog.open(ResetPasswordComponent, {
-      width: '400px'
+      width: '270px'
     });
   }
 }

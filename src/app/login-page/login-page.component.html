@@ -10,33 +10,33 @@
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
     >
-      <!--<mat-form-field class="example-full-width">
-        <mat-label>Telephone</mat-label>
-        <span matPrefix>+1 &nbsp;</span>
-        <input type="tel" matInput placeholder="555-555-1234">
-        <mat-icon matSuffix>mode_edit</mat-icon>
-      </mat-form-field>-->
-
       <div>
-        <input formControlName="email" id="email" type="email">
-        <label for="email">
-          <i class="fa fa-book"></i>
-          Email
-        </label>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="email" id="email" type="email">
+          <mat-label for="email">
+            <i class="fa fa-user"></i>
+            Email
+          </mat-label>
+        </mat-form-field>
+
       </div>
       <div>
-        <input
-          formControlName="password"
-          id="password"
-          type="password"
-        >
-        <label for="password">
-          <i class="fa fa-book"></i>
-          Password
-        </label>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            formControlName="password"
+            id="password"
+            type="password"
+          >
+          <mat-label for="password">
+            <i class="fa fa-book"></i>
+            Password
+          </mat-label>
+        </mat-form-field>
       </div>
       <div class="submit-login">
         <button
+          mat-button
           type="submit"
           [disabled]="loginForm.invalid"
           [ngClass] = "{'enabled-color': loginForm.valid}"
