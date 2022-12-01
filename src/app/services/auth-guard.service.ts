@@ -6,8 +6,7 @@ export class AuthGuardService implements CanActivate {
   constructor(public auth: AuthService, public router: Router) {}
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {
-      //TODO:
-      //add some kind of 404 page for failed access
+      alert("You don't have permission to view this page")
       return false;
     }
     return true;
